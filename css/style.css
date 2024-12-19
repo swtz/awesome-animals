@@ -148,3 +148,33 @@ body {
 .mapa {
   grid-column: 2;
 }
+
+.dados {
+  grid-column: 3;
+}
+
+.dados li {
+  margin-bottom: 1rem;
+  font-family: Helvetica, Arial;
+}
+
+.dados li::before {
+  content: '';
+  display: inline-block;
+  width: 22px;
+  height: 12px;
+  margin-right: 10px;
+  background: #FB5;
+}
+
+.copyright {
+  grid-column: 3 / 5;
+  margin-bottom: 2rem;
+  background: #FB5;
+}
+
+.copyright p {
+  padding: 20px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: bold;
+}
