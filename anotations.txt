@@ -1,1 +1,25 @@
-// # Successful!
+// Anotações sobre métodos e propriedades do objeto 'window' e dos objetos
+// do tipo HTMLElement
+
+const isMobile = window.matchMedia('(max-width: 700px)'); // like a media query
+const faqList = document.querySelector('.faq-lista');
+const lastDt = faqList.lastElementChild.previousElementSibling;
+
+const ogLastDt = lastDt.innerText; // preserva texto original
+
+// Abaixo, um exemplo de como alterar o texto de um elemento HTML de modo dinâmico:
+// setInterval(() => {
+//   if (isMobile.matches) {
+//     lastDt.innerText = 'Troquei o texto de modo dinâmico!';
+//   } else {
+//     lastDt.innerText = ogLastDt;
+//   }
+// }, 1000)
+
+if (isMobile.matches) {
+  lastDt.innerText = 'Troquei o texto de modo dinâmico!';
+} else {
+  lastDt.innerText = ogLastDt;
+}
+
+console.log('Tamanho da tela:', window.innerWidth);
