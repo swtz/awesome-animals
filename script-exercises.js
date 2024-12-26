@@ -1,39 +1,46 @@
-// Class 0306 (ORIGAMID)
-
 // #1
-const firstImg = document.querySelector('img');
+// const linksInternos = document.querySelectorAll('a[href^="#"]');
 
-const offSetTop = firstImg.offsetTop;
-console.log(offSetTop); // 350 (browser full screen)
+// handleClick = {
+//   handleEvent(event) {
+//     event.preventDefault();
+//     removeClass(this.listLink);
+//     event.target.classList.add('ativo');
+//   }
+// }
+
+// handleClick.listLink = [];
+
+// function removeClass(listLink) {
+//   listLink.forEach(link => {
+//     link.classList.remove('ativo');
+//   });
+// }
+
+// linksInternos.forEach(link => {
+//   handleClick.listLink.push(link);
+//   link.addEventListener('click', handleClick);
+// })
+
 
 // #2
-const allImgs = document.querySelectorAll('img');
-let sum = 0;
+// const body = document.body;
+// body.addEventListener('click', (event) => {
+//   console.log(event.target);
+// })
 
-allImgs.forEach((img) => {
-  sum += img.width;
-})
-console.log(sum); // 1410 (browser full screen)
 
 // #3
-const allLinks = document.querySelectorAll('a');
+// const body = document.body;
+// body.addEventListener('click', (event) => {
+//   console.log(event.target.remove());
+// })
 
-allLinks.forEach((link) => {
-  // link.style.height = '48px';
-  const height = link.getBoundingClientRect().height;
-  const width = link.getBoundingClientRect().width;
-
-  if (height < 48 || width < 48) {
-    console.log(`O link ${link.innerText} NÃO possui uma boa acessibilidade.`);
-  } else {
-    console.log(`O link ${link.innerText} POSSUI uma boa acessibilidade.`);
-  }
-})
 
 // #4
-const isMobile = matchMedia('(max-width: 720px)');
-const menu = document.querySelector('.menu');
-
-if (isMobile.matches) {
-  menu.classList.add('menu-mobile');
-}
+// const body = document.body;
+// body.addEventListener('keydown', function (event) {
+//   if (event.key === 't') {
+//     this.style.fontSize = '50px';
+//   }
+// })

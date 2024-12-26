@@ -1,1 +1,35 @@
+// AULA 0307 | Events
 
+const imgList = document.querySelector('.animais-lista');
+imgList.addEventListener('click', handleEvent);
+
+function handleEvent(event) {
+  console.log(event.currentTarget); // this -> imgList
+  console.log(event.target); // img
+}
+
+// Importante:
+const body = document.body;
+
+// function => usa o 'this' do contexto onde foi criada
+// Como o contexto é o 'body', 'this' é o 'body' 
+body.addEventListener('keydown', function (event) {
+  if (event.key === 't') {
+    console.log(this); // body: HTMLElement
+    this.style.fontSize = '50px';
+  }
+})
+
+// arrow function -> usa o 'this' do objeto pai
+// Ora, o método '.addEventListener' vem do objeto 'window'
+// Logo, 'this' será o objeto 'window'
+body.addEventListener('keydown', (event) => {
+  if (event.key === 't') {
+    console.log(this); // window: Window
+    this.style.fontSize = '50px';
+  }
+})
+
+// css selector tip:
+// document.querySelector('div *')
+// seleciona todos os elementos dentro da 'div'
