@@ -1,35 +1,38 @@
-// AULA 0307 | Events
+// AULA 0308 | Transversing e Manipulação
 
-const imgList = document.querySelector('.animais-lista');
-imgList.addEventListener('click', handleEvent);
+// Transversing -> Navegar pela DOM
 
-function handleEvent(event) {
-  console.log(event.currentTarget); // this -> imgList
-  console.log(event.target); // img
-}
+const lista = document.querySelector('.animais-lista');
 
-// Importante:
-const body = document.body;
+lista.parentElement; // pai
+lista.parentElement.parentElement; // pai do pai
 
-// function => usa o 'this' do contexto onde foi criada
-// Como o contexto é o 'body', 'this' é o 'body' 
-body.addEventListener('keydown', function (event) {
-  if (event.key === 't') {
-    console.log(this); // body: HTMLElement
-    this.style.fontSize = '50px';
-  }
-})
+lista.previousElementSibling; // elemento acima
+lista.nextElementSibling; // elemento abaixo
 
-// arrow function -> usa o 'this' do objeto pai
-// Ora, o método '.addEventListener' vem do objeto 'window'
-// Logo, 'this' será o objeto 'window'
-body.addEventListener('keydown', (event) => {
-  if (event.key === 't') {
-    console.log(this); // window: Window
-    this.style.fontSize = '50px';
-  }
-})
+lista.children; // HTMLCollection com os filhos
+lista.children[0]; // primeiro filho
+lista.children[--lista.children.length]; // último filho
 
-// css selector tip:
-// document.querySelector('div *')
-// seleciona todos os elementos dentro da 'div'
+lista.querySelectorAll('li'); // todas as LI's
+lista.querySelector('li:last-child'); // último filho
+
+// Element -> é um elemento html
+// Node -> pode ser qualquer caractere presente no objeto document.documentElement
+
+// métodos tais como 
+HTMLElement.prototype.replaceChild()
+HTMLElement.prototype.appendChild()
+HTMLElement.prototype.firstChild
+// lidam com os FILHOS do HTMLElement
+
+HTMLElement.prototype.insertBefore()
+// arg0: Elemento a ser movido, arg1: Elemento FILHO do HTMLElement
+
+
+// Clonar Elementos
+HTMLElement.prototype.cloneNode() // arg0: Boolean
+// true -> inclui os filhos | false -> não inclui os filhos
+// return -> new HTMLElement, ou seja, uma nova instância do elemento
+
+// O default value desse método DEPENDENDO DO BROWSER é 'true'
