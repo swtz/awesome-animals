@@ -96,6 +96,10 @@ body {
   grid-column: 2;
 }
 
+.animais-lista img {
+  cursor: pointer;
+}
+
 .animais-lista::-webkit-scrollbar {
   width: 18px;
 }
@@ -116,6 +120,24 @@ body {
 
 .animais-descricao section {
   margin-bottom: 3rem;
+  display: none;
+}
+
+.animais-descricao section.ativo {
+  display: block;
+  animation: show-text .3s forwards;
+}
+
+@keyframes show-text {
+  from {
+    opacity: 0;
+    transform: translate3d(-30px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .faq-lista {
