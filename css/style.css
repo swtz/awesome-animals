@@ -118,17 +118,17 @@ body {
   grid-column: 3;
 }
 
-.animais-descricao section {
+.js .animais-descricao section {
   margin-bottom: 3rem;
   display: none;
 }
 
-.animais-descricao section[data-tab-nav="show-right"].ativo {
+.js .animais-descricao section[data-tab-nav="show-right"].ativo {
   display: block;
   animation: show-right .3s forwards;
 }
 
-.animais-descricao section[data-tab-nav="show-down"].ativo {
+.js .animais-descricao section[data-tab-nav="show-down"].ativo {
   display: block;
   animation: show-down .3s forwards;
 }
