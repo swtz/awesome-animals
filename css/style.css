@@ -261,6 +261,11 @@ body {
   }
 }
 
+.js dl[data-accordion] dt {
+  user-select: none;
+  cursor: pointer;
+}
+
 .js dl[data-accordion] dt span {
   font-size: 24px;
   display: inline-block;
