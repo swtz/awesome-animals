@@ -1,25 +1,21 @@
-export default function initTabNavigation() {
-  const imgList = document.querySelector('.animais-lista');
-  const imgs = imgList.querySelectorAll('li img');
-  const sectionList = document.querySelector('.animais-descricao');
-  const sections = sectionList.querySelectorAll('[data-tab-nav]');
+export default function initTabNavigation() { }
 
-  if (!sections.length) {
-    document.documentElement.classList.remove('js');
-  } else {
-    sections[0].classList.add('ativo');
+const tabMenu = document.querySelectorAll('.js-tabmenu li');
+const tabContent = document.querySelectorAll('.js-tabcontent section');
 
-    imgs.forEach((img) => {
-      img.addEventListener('click', handleClick);
+if (tabMenu.length && tabContent.length) {
+  tabContent[0].classList.add('active');
+
+  function activeTab(index) {
+    tabContent.forEach(section => {
+      section.classList.remove('active');
     })
-
-    function handleClick(event) {
-      imgs.forEach((img, index) => {
-        sections[index].classList.remove('ativo');
-        if (event.target === img) {
-          sections[index].classList.add('ativo');
-        }
-      })
-    }
+    tabContent[index].classList.add('active');
   }
+
+  tabMenu.forEach((li, index) => {
+    li.addEventListener('click', () => {
+      activeTab(index);
+    })
+  })
 }

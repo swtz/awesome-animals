@@ -3,18 +3,13 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Animais Fantásticos</title>
+  <title>Animais Fantásticos | Tab Navigation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <script>
-    document.documentElement.classList.add("js");
-  </script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
-
+  <script>document.documentElement.className += " js";</script>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -31,7 +26,7 @@
   <section class="grid-section animais" id="animais">
     <h1 class="titulo">Animais Fantásticos</h1>
 
-    <ul class="animais-lista">
+    <ul class="animais-lista js-tabmenu">
       <li>
         <img src="img/imagem1.jpg">
       </li>
@@ -52,8 +47,8 @@
       </li>
     </ul>
 
-    <div class="animais-descricao">
-      <section data-tab-nav="show-right">
+    <div class="animais-descricao js-tabcontent">
+      <section>
         <h2>Raposa</h2>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, officiis enim laudantium aspernatur
           asperiores laboriosam ipsum consequuntur! Consequuntur nam sequi ducimus, cum ullam maxime ipsa!</p>
@@ -64,7 +59,7 @@
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, officiis enim laudantium aspernatur
           asperiores laboriosam ipsum consequuntur! Consequuntur nam sequi ducimus, cum ullam maxime ipsa!</p>
       </section>
-      <section data-tab-nav="show-down">
+      <section>
         <h2>Esquilo</h2>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, officiis enim laudantium aspernatur
           asperiores laboriosam ipsum consequuntur! Consequuntur nam sequi ducimus, cum ullam maxime ipsa!</p>
@@ -75,7 +70,7 @@
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, officiis enim laudantium aspernatur
           asperiores laboriosam ipsum consequuntur! Consequuntur nam sequi ducimus, cum ullam maxime ipsa!</p>
       </section>
-      <section data-tab-nav="show-right">
+      <section>
         <h2>Urso</h2>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, officiis enim laudantium aspernatur
           asperiores laboriosam ipsum consequuntur! Consequuntur nam sequi ducimus, cum ullam maxime ipsa!</p>
@@ -86,7 +81,7 @@
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, officiis enim laudantium aspernatur
           asperiores laboriosam ipsum consequuntur! Consequuntur nam sequi ducimus, cum ullam maxime ipsa!</p>
       </section>
-      <section data-tab-nav="show-down">
+      <section>
         <h2>Lobo</h2>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, officiis enim laudantium aspernatur
           asperiores laboriosam ipsum consequuntur! Consequuntur nam sequi ducimus, cum ullam maxime ipsa!</p>
@@ -97,7 +92,7 @@
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, officiis enim laudantium aspernatur
           asperiores laboriosam ipsum consequuntur! Consequuntur nam sequi ducimus, cum ullam maxime ipsa!</p>
       </section>
-      <section data-tab-nav="show-right">
+      <section>
         <h2>Macaco</h2>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, officiis enim laudantium aspernatur
           asperiores laboriosam ipsum consequuntur! Consequuntur nam sequi ducimus, cum ullam maxime ipsa!</p>
@@ -108,7 +103,7 @@
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, officiis enim laudantium aspernatur
           asperiores laboriosam ipsum consequuntur! Consequuntur nam sequi ducimus, cum ullam maxime ipsa!</p>
       </section>
-      <section data-tab-nav="show-down">
+      <section>
         <h2>Leão</h2>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, officiis enim laudantium aspernatur
           asperiores laboriosam ipsum consequuntur! Consequuntur nam sequi ducimus, cum ullam maxime ipsa!</p>
