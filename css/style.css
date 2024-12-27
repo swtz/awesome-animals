@@ -239,3 +239,36 @@ body {
     transform: translate3d(0, 0, 0);
   }
 }
+
+.js dl[data-accordion] dd {
+  display: none;
+}
+
+.js dl[data-accordion] dd.active {
+  display: block;
+  animation: accordion .3s forwards;
+}
+
+@keyframes accordion {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -30px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.js dl[data-accordion] dt span {
+  font-size: 24px;
+  display: inline-block;
+  position: relative;
+  left: -4px;
+  top: 2px;
+}
+
+.js dl[data-accordion] dt.active span {
+  transform: rotate(180deg);
+}
