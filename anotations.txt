@@ -1,1 +1,9 @@
 // AULA 030X
+
+// smooth scroll tip:
+HTMLElement.prototype.scrollIntoView({
+  behavior: 'smooth',
+  block: 'start'
+});
+// Assim, não é necessário verificar o deslocamento do topo do elemento
+// referente ao topo do 'window'

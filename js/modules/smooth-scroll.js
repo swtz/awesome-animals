@@ -1,5 +1,5 @@
 export default function initSmoothScroll() {
-  const internalLinks = document.querySelectorAll('a[href^="#"]');
+  const internalLinks = document.querySelectorAll('[data-smooth-scroll] a[href^="#"]');
 
   function handleClick(event) {
     event.preventDefault();

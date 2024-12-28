@@ -1,9 +1,7 @@
 export default function initScrollAnimated() {
   const sections = document.querySelectorAll('[data-scroll-animated]');
 
-  if (!sections.length) {
-    document.documentElement.classList.remove('js');
-  } else {
+  if (sections.length) {
     function animaScroll() {
       sections.forEach(section => {
         const elementTop = getRectTop(section);
@@ -11,7 +9,6 @@ export default function initScrollAnimated() {
 
         if (elementTop < top) {
           section.dataset.scrollAnimated = "active";
-          console.log(section.dataset, top);
         }
       })
     }
@@ -21,5 +18,7 @@ export default function initScrollAnimated() {
     }
 
     window.addEventListener('scroll', animaScroll);
+
+    animaScroll();
   }
 }
