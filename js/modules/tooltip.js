@@ -1,7 +1,9 @@
+import { isMobile } from '../script.js';
+
 export default function initTooltip() {
   const tooltips = document.querySelectorAll('[data-tooltip]');
 
-  if (tooltips) {
+  if (tooltips && !isMobile) {
     tooltips.forEach(tooltip => {
       tooltip.addEventListener('mouseover', onMouseOver);
     })
