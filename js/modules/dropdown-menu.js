@@ -14,11 +14,9 @@ export default function initDropdownMenu() {
         this.classList.toggle('active');
       }
 
-      function removeActive(element) {
-        element.classList.remove('active');
-      }
-
-      clickOutside(events, this, removeActive);
+      clickOutside(events, this, () => {
+        this.classList.remove('active');
+      });
     }
 
     dropdownMenus.forEach(dropdownMenu => {

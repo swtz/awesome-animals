@@ -60,10 +60,10 @@
 
 .js .js-tabcontent section.active {
   display: block !important;
-  animation: show .3s forwards;
+  animation: show-right .3s forwards;
 }
 
-@keyframes show {
+@keyframes show-right {
   from {
     opacity: 0;
     transform: translate3d(-30px, 0, 0);

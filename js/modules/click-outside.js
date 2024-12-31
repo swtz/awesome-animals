@@ -1,24 +1,27 @@
-
-const html = document.documentElement;
-
 export default function clickOutside(
   events,
   element,
-  callbackFn) {
+  callback) {
+  const html = document.documentElement;
+
   if (!html.hasAttribute('data-outside')) {
     events.forEach(userEvent => {
-      html.addEventListener(userEvent, handleClickOutside);
+      setTimeout(() => {
+        html.addEventListener(userEvent, handleClickOutside)
+      });
     })
     html.setAttribute('data-outside', '');
   }
 
   function handleClickOutside(event) {
     if (!element.contains(event.target)) {
-      callbackFn(element);
-      events.forEach(userEvent => {
-        html.removeEventListener(userEvent, handleClickOutside);
-      })
-      html.removeAttribute('data-outside');
+      if (!event.target.classList.contains('active')) {
+        callback();
+        events.forEach(userEvent => {
+          html.removeEventListener(userEvent, handleClickOutside);
+        })
+        html.removeAttribute('data-outside');
+      }
     }
   }
 
