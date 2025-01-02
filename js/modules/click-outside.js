@@ -4,38 +4,22 @@ export default function clickOutside(
   callback) {
   const html = document.documentElement;
 
-  if (!html.hasAttribute('data-outside')) {
+  if (!element.hasAttribute('data-outside')) {
     events.forEach(userEvent => {
       setTimeout(() => {
         html.addEventListener(userEvent, handleClickOutside)
       });
     })
-    html.setAttribute('data-outside', '');
+    element.setAttribute('data-outside', '');
   }
 
   function handleClickOutside(event) {
     if (!element.contains(event.target)) {
-      if (!event.target.classList.contains('active')) {
-        callback();
-        events.forEach(userEvent => {
-          html.removeEventListener(userEvent, handleClickOutside);
-        })
-        html.removeAttribute('data-outside');
-      }
+      element.removeAttribute('data-outside');
+      events.forEach(userEvent => {
+        html.removeEventListener(userEvent, handleClickOutside);
+      })
+      callback();
     }
   }
-
-  // Using callback-object:
-  //
-  // const callbackObject = {};
-  // callbackObject.element = element;
-  // callbackObject.handleEvent = function (event) {
-  //   if (!this.element.contains(event.target)) {
-  //     callbackFn(this.element);
-  //     events.forEach(userEvent => {
-  //       html.removeEventListener(userEvent, callbackObject);
-  //     })
-  //     html.removeAttribute('data-outside');
-  //   }
-  // }
 }
