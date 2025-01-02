@@ -9,7 +9,8 @@ export default function initMenuMobile() {
     btn.addEventListener(userEvent, handleEvent);
   })
 
-  function handleEvent() {
+  function handleEvent(event) {
+    event.preventDefault();
     menuList.classList.add('active');
     btn.classList.add('active');
 
