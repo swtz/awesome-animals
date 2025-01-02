@@ -7,6 +7,7 @@ import initTooltip from "./modules/tooltip.js";
 import initDropdownMenu from "./modules/dropdown-menu.js";
 import initMenuMobile from "./modules/menu-mobile.js";
 import initNumberAnimated from "./modules/number-animated.js";
+import initOperation from "./modules/operation.js";
 
 export const isMobile = matchMedia('(max-width: 700px)').matches;
 
@@ -19,3 +20,4 @@ initTooltip();
 initDropdownMenu();
 initMenuMobile();
 initNumberAnimated();
+initOperation();
