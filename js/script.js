@@ -8,6 +8,7 @@ import initDropdownMenu from "./modules/dropdown-menu.js";
 import initMenuMobile from "./modules/menu-mobile.js";
 import initOperation from "./modules/operation.js";
 import initAnimalsFetch from "./modules/animals-fetch.js";
+import initBtcFetch from "./modules/btc-fetch.js";
 
 export const isMobile = matchMedia('(max-width: 700px)').matches;
 
@@ -21,3 +22,4 @@ initDropdownMenu();
 initMenuMobile();
 initOperation();
 initAnimalsFetch();
+initBtcFetch();
