@@ -1,25 +1,45 @@
-export default function initSmoothScroll() {
-  const internalLinks = document.querySelectorAll('[data-smooth-scroll] a[href^="#"]');
+export default class SmoothScroll {
+  constructor(links, options) {
+    this.internalLinks = document.querySelectorAll(links);
 
-  function findById(el) {
+    // checks if 'options' exists else assign a default value to it
+    if (this.options) {
+      this.options = options;
+    } else {
+      this.options = {
+        behavior: 'smooth',
+      };
+    }
+
+    // binding 'this' to the callback to reference this object
+    this.getElementTopAndScrollTo = this.getElementTopAndScrollTo.bind(this);
+  }
+
+  // get HTMLElement that contains the id respective of 'el'
+  static findById(el) {
     return document.querySelector(`${el.getAttribute('href')}`);
   }
 
-  function handleClick(event) {
+  // get top from return of 'findById' after checks
+  // if exists and scroll to 'element'
+  getElementTopAndScrollTo(event) {
     event.preventDefault();
-    const section = findById(event.target);
-    if (section) {
-      const sectionRect = section.getBoundingClientRect();
-      window.scrollTo(
-        {
-          top: sectionRect.top,
-          behavior: 'smooth',
-        },
-      );
+    const element = this.constructor.findById(event.target);
+    if (element) {
+      this.options.top = element.getBoundingClientRect().top;
+      window.scrollTo(this.options);
     }
   }
 
-  internalLinks.forEach((link) => {
-    link.addEventListener('click', handleClick);
-  });
+  // adds events for each selected links
+  addLinksEvent() {
+    this.internalLinks.forEach((link) => {
+      link.addEventListener('click', this.getElementTopAndScrollTo);
+    });
+  }
+
+  // fires 'addLinksEvent' if only exists some link selected
+  init() {
+    if (this.internalLinks.length) this.addLinksEvent();
+  }
 }
