@@ -38,12 +38,12 @@
 
 .animais-lista::-webkit-scrollbar-thumb {
   background: #FB5;
-  border-left: 4px solid #FAF6AD;
-  border-right: 4px solid #FAF6AD;
+  border-left: 4px solid #FAF6ED;
+  border-right: 4px solid #FAF6ED;
 }
 
 .animais-lista::-webkit-scrollbar-track {
-  background: #FAF6AD;
+  background: #FAF6ED;
 }
 
 .animais-descricao {
