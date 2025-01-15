@@ -1,3 +1,5 @@
+import { events } from './utils/utils';
+
 export default class SmoothScroll {
   constructor(links, options) {
     this.internalLinks = document.querySelectorAll(links);
@@ -33,8 +35,10 @@ export default class SmoothScroll {
 
   // adds events for each selected links
   addLinksEvent() {
-    this.internalLinks.forEach((link) => {
-      link.addEventListener('click', this.getElementTopAndScrollTo);
+    events.forEach((userEvent) => {
+      this.internalLinks.forEach((link) => {
+        link.addEventListener(userEvent, this.getElementTopAndScrollTo);
+      });
     });
   }
 
