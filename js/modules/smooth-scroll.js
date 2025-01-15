@@ -45,5 +45,6 @@ export default class SmoothScroll {
   // fires 'addLinksEvent' if only exists some link selected
   init() {
     if (this.internalLinks.length) this.addLinksEvent();
+    return this;
   }
 }
