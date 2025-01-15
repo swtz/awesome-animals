@@ -1,0 +1,2 @@
+// Consolidação dos conhecimentos obtidos até o módulo 11
+// Curso: ORIGAMID ES6+
