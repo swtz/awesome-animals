@@ -5,12 +5,12 @@ export default class SmoothScroll {
     this.internalLinks = document.querySelectorAll(links);
 
     // checks if 'options' exists else assign a default value to it
-    if (this.options) {
-      this.options = options;
-    } else {
+    if (options === undefined || Object.keys(options).length === 0) {
       this.options = {
         behavior: 'smooth',
       };
+    } else {
+      this.options = options;
     }
 
     // binding 'this' to the callback to reference this object
