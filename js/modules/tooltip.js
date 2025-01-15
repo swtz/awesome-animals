@@ -3,23 +3,6 @@ import { isMobile } from './utils/utils.js';
 export default function initTooltip() {
   const tooltips = document.querySelectorAll('[data-tooltip]');
 
-  if (tooltips && !isMobile) {
-    tooltips.forEach((tooltip) => {
-      tooltip.addEventListener('mouseover', onMouseOver);
-    });
-  }
-
-  function onMouseOver() {
-    const tooltipBox = createTooltipBox(this);
-
-    onMouseMove.tooltipBox = tooltipBox;
-    this.addEventListener('mousemove', onMouseMove);
-
-    onMouseLeave.tooltipBox = tooltipBox;
-    onMouseLeave.element = this;
-    this.addEventListener('mouseleave', onMouseLeave);
-  }
-
   const onMouseMove = {
     handleEvent(event) {
       this.tooltipBox.style.top = `${event.pageY + 15}px`;
@@ -42,5 +25,22 @@ export default function initTooltip() {
     tooltipBox.innerText = text;
     document.body.appendChild(tooltipBox);
     return tooltipBox;
+  }
+
+  function onMouseOver() {
+    const tooltipBox = createTooltipBox(this);
+
+    onMouseMove.tooltipBox = tooltipBox;
+    this.addEventListener('mousemove', onMouseMove);
+
+    onMouseLeave.tooltipBox = tooltipBox;
+    onMouseLeave.element = this;
+    this.addEventListener('mouseleave', onMouseLeave);
+  }
+
+  if (tooltips && !isMobile) {
+    tooltips.forEach((tooltip) => {
+      tooltip.addEventListener('mouseover', onMouseOver);
+    });
   }
 }

@@ -2,7 +2,7 @@ export default function initNumberAnimated() {
   const numbers = document.querySelectorAll('[data-number]');
 
   function animaNumeros() {
-    numbers.forEach(number => {
+    numbers.forEach((number) => {
       let i = 0;
       const total = +number.innerHTML;
       const increment = Math.floor(total / 100);
@@ -18,6 +18,7 @@ export default function initNumberAnimated() {
     });
   }
 
+  let observer;
   function handleMutation(mutation) {
     if (mutation[0].target.getAttribute('data-scroll-animated') === 'active') {
       observer.disconnect();
@@ -25,7 +26,7 @@ export default function initNumberAnimated() {
     }
   }
 
-  const observer = new MutationObserver(handleMutation);
+  observer = new MutationObserver(handleMutation);
   const observeTarget = document.querySelector('.numbers');
 
   observer.observe(observeTarget, { attributes: true });
