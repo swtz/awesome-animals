@@ -5,10 +5,6 @@ export default function initMenuMobile() {
   const menuList = document.querySelector('[data-menu="list"]');
   const events = ['touchstart', 'click'];
 
-  events.forEach(userEvent => {
-    btn.addEventListener(userEvent, handleEvent);
-  })
-
   function handleEvent(event) {
     event.preventDefault();
     menuList.classList.add('active');
@@ -17,6 +13,10 @@ export default function initMenuMobile() {
     clickOutside(events, menuList, () => {
       menuList.classList.remove('active');
       btn.classList.remove('active');
-    })
+    });
   }
+
+  events.forEach((userEvent) => {
+    btn.addEventListener(userEvent, handleEvent);
+  });
 }
