@@ -6,38 +6,31 @@ export default class SmoothScroll {
 
     // checks if 'options' exists else assign a default value to it
     if (options === undefined || Object.keys(options).length === 0) {
-      this.options = {
-        behavior: 'smooth',
-      };
+      this.options = { behavior: 'smooth', block: 'start' };
     } else {
       this.options = options;
     }
 
     // binding 'this' to the callback to reference this object
-    this.getElementTopAndScrollTo = this.getElementTopAndScrollTo.bind(this);
+    this.scrollToElement = this.scrollToElement.bind(this);
   }
 
-  // get HTMLElement that contains the id respective of 'el'
-  static findById(el) {
-    return document.querySelector(`${el.getAttribute('href')}`);
-  }
-
-  // get top from return of 'findById' after checks
-  // if exists and scroll to 'element'
-  getElementTopAndScrollTo(event) {
+  // get value of 'href' from target
+  // selects a element that contains the same value
+  // of 'href' into 'id' and
+  // scrolls to the 'start' of element
+  scrollToElement(event) {
     event.preventDefault();
-    const element = this.constructor.findById(event.target);
-    if (element) {
-      this.options.top = element.getBoundingClientRect().top;
-      window.scrollTo(this.options);
-    }
+    const href = event.target.getAttribute('href');
+    const element = document.querySelector(href);
+    element.scrollIntoView(this.options);
   }
 
   // adds events for each selected links
   addLinksEvent() {
     events.forEach((userEvent) => {
       this.internalLinks.forEach((link) => {
-        link.addEventListener(userEvent, this.getElementTopAndScrollTo);
+        link.addEventListener(userEvent, this.scrollToElement);
       });
     });
   }
