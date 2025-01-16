@@ -1,17 +1,34 @@
-export default function initAccordionList() {
-  const faqListDt = document.querySelectorAll('[data-accordion] dt');
+import { events } from './utils/utils';
 
-  function handleClick() {
-    this.classList.toggle('active');
-    this.nextElementSibling.classList.toggle('active');
+export default class Accordion {
+  constructor(accordionList, className) {
+    this.accordionList = document.querySelectorAll(accordionList);
+    this.activeClass = className;
+    this.events = events;
   }
 
-  if (faqListDt.length) {
-    faqListDt[0].classList.add('active');
-    faqListDt[0].nextElementSibling.classList.add('active');
+  // toggles the class which show the content ('nextElementSibling') of target
+  toggleActive(item) {
+    item.classList.toggle(this.activeClass);
+    item.nextElementSibling.classList.toggle(this.activeClass);
+  }
 
-    faqListDt.forEach((dt) => {
-      dt.addEventListener('click', handleClick);
+  // adds events for each accordion item
+  addAccordionListEvents() {
+    this.events.forEach((userEvent) => {
+      this.accordionList.forEach((item) => {
+        item.addEventListener(userEvent, () => this.toggleActive(item));
+      });
     });
+  }
+
+  init() {
+    if (this.accordionList.length) {
+      this.addAccordionListEvents();
+
+      // activates the first accordion item
+      this.toggleActive(this.accordionList[0]);
+    }
+    return this;
   }
 }
