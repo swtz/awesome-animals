@@ -1,21 +1,43 @@
-export default function initTabNavigation() {
-  const tabMenu = document.querySelectorAll('.js-tabmenu li');
-  const tabContent = document.querySelectorAll('.js-tabcontent section');
+import { events } from './utils/utils';
 
-  function activeTab(index) {
-    tabContent.forEach((section) => {
-      section.classList.remove('active');
-    });
-    tabContent[index].classList.add('active');
+export default class TabNav {
+  constructor(menuList, contentList, className) {
+    this.tabMenu = document.querySelectorAll(menuList);
+    this.tabContent = document.querySelectorAll(contentList);
+    this.activeClass = className;
+    this.events = events;
   }
 
-  if (tabMenu.length && tabContent.length) {
-    tabContent[0].classList.add('active');
+  // shows only one content at a time
+  // remove 'activeClass' from all tab contents
+  // and add 'activeClass' in the element that
+  // receives the 'userEvent' from 'addTabMenuEvent'
+  toggleTab(index) {
+    this.tabContent.forEach((section) => {
+      section.classList.remove(this.activeClass);
+    });
+    this.tabContent[index].classList.add(this.activeClass);
+  }
 
-    tabMenu.forEach((li, index) => {
-      li.addEventListener('click', () => {
-        activeTab(index);
+  // adds event for each tab menu selected
+  addTabMenuEvent() {
+    this.events.forEach((userEvent) => {
+      this.tabMenu.forEach((li, index) => {
+        li.addEventListener(userEvent, (event) => {
+          // prevents 'double click' effect by 'touchstart' event
+          event.preventDefault();
+          this.toggleTab(index);
+        });
       });
     });
+  }
+
+  init() {
+    if (this.tabMenu.length && this.tabContent.length) {
+      this.addTabMenuEvent();
+
+      // activates first tab item
+      this.toggleTab(0);
+    }
   }
 }

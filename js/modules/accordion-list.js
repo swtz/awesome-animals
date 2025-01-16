@@ -17,7 +17,11 @@ export default class Accordion {
   addAccordionListEvents() {
     this.events.forEach((userEvent) => {
       this.accordionList.forEach((item) => {
-        item.addEventListener(userEvent, () => this.toggleActive(item));
+        item.addEventListener(userEvent, (event) => {
+          // prevents 'double click' effect by 'touchstart' event
+          event.preventDefault();
+          this.toggleActive(item);
+        });
       });
     });
   }
