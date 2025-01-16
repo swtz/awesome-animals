@@ -39,5 +39,6 @@ export default class TabNav {
       // activates first tab item
       this.toggleTab(0);
     }
+    return this;
   }
 }
