@@ -7,20 +7,28 @@ export default class Accordion {
     this.events = events;
   }
 
-  toggleActive() {
-    this.classList.toggle(this.activeClass);
-    this.nextElementSibling.classList.toggle(this.activeClass);
+  // toggles the class which show the content ('nextElementSibling') of target
+  toggleActive(item) {
+    item.classList.toggle(this.activeClass);
+    item.nextElementSibling.classList.toggle(this.activeClass);
   }
 
+  // adds events for each accordion item
   addAccordionListEvents() {
     this.events.forEach((userEvent) => {
       this.accordionList.forEach((item) => {
-        item.addEventListener(userEvent, this.toggleActive);
+        item.addEventListener(userEvent, () => this.toggleActive(item));
       });
     });
   }
 
   init() {
-    if (this.accordionList.length) this.addAccordionListEvents();
+    if (this.accordionList.length) {
+      this.addAccordionListEvents();
+
+      // activates the first accordion item
+      this.toggleActive(this.accordionList[0]);
+    }
+    return this;
   }
 }
