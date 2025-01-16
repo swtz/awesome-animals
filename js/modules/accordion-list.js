@@ -1,17 +1,26 @@
-export default function initAccordionList() {
-  const faqListDt = document.querySelectorAll('[data-accordion] dt');
+import { events } from './utils/utils';
 
-  function handleClick() {
-    this.classList.toggle('active');
-    this.nextElementSibling.classList.toggle('active');
+export default class Accordion {
+  constructor(accordionList, className) {
+    this.accordionList = document.querySelectorAll(accordionList);
+    this.activeClass = className;
+    this.events = events;
   }
 
-  if (faqListDt.length) {
-    faqListDt[0].classList.add('active');
-    faqListDt[0].nextElementSibling.classList.add('active');
+  toggleActive() {
+    this.classList.toggle(this.activeClass);
+    this.nextElementSibling.classList.toggle(this.activeClass);
+  }
 
-    faqListDt.forEach((dt) => {
-      dt.addEventListener('click', handleClick);
+  addAccordionListEvents() {
+    this.events.forEach((userEvent) => {
+      this.accordionList.forEach((item) => {
+        item.addEventListener(userEvent, this.toggleActive);
+      });
     });
+  }
+
+  init() {
+    if (this.accordionList.length) this.addAccordionListEvents();
   }
 }
