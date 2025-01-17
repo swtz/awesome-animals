@@ -31,9 +31,9 @@ modal.init();
 const tooltip = new Tooltip('[data-tooltip]');
 tooltip.init();
 
-initScrollAnimated();
-initDropdownMenu();
-initMenuMobile();
-initOperation();
 initAnimalsFetch();
 initBtcFetch();
+initDropdownMenu();
+initMenuMobile();
+initScrollAnimated();
+initOperation();

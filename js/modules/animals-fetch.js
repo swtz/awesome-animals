@@ -1,4 +1,4 @@
-import initNumberAnimated from './number-animated.js';
+import AnimateNumbers from './animate-numbers.js';
 
 export default async function initAnimalsFetch() {
   const dataAnimals = await fetch('./data/animals-api.json');
@@ -21,5 +21,6 @@ export default async function initAnimalsFetch() {
     changeHTML(html, newHTML);
   });
 
-  initNumberAnimated();
+  const animateNumbers = new AnimateNumbers('[data-number]', '.numbers', 'active');
+  animateNumbers.init();
 }
