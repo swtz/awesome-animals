@@ -1,7 +1,9 @@
-export default function initNumberAnimated() {
-  const numbers = document.querySelectorAll('[data-number]');
+export default class AnimateNumbers {
+  constructor(numbers) {
+    this.numbers = document.querySelectorAll(numbers);
+  }
 
-  function animaNumeros() {
+  animaNumeros() {
     numbers.forEach((number) => {
       let i = 0;
       const total = +number.innerHTML;
@@ -19,7 +21,7 @@ export default function initNumberAnimated() {
   }
 
   let observer;
-  function handleMutation(mutation) {
+  handleMutation(mutation) {
     if (mutation[0].target.getAttribute('data-scroll-animated') === 'active') {
       observer.disconnect();
       animaNumeros();

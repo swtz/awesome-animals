@@ -1,9 +1,10 @@
-import initNumberAnimated from './number-animated.js';
+import AnimateNumbers from './animate-numbers.js';
 
 export default async function initAnimalsFetch() {
   const dataAnimals = await fetch('./data/animals-api.json');
   const dataAnimalsJson = await dataAnimals.json();
   const html = document.querySelector('.grid-numbers');
+  const animateNumbers = new AnimateNumbers('[data-number]');
 
   function createHTML(object) {
     const div = document.createElement('div');
@@ -21,5 +22,5 @@ export default async function initAnimalsFetch() {
     changeHTML(html, newHTML);
   });
 
-  initNumberAnimated();
+  animateNumbers.init();
 }
