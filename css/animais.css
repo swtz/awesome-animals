@@ -43,7 +43,7 @@
 }
 
 .animais-lista::-webkit-scrollbar-track {
-  background: #FAF6ED;
+  background: transparent;
 }
 
 .animais-descricao {
