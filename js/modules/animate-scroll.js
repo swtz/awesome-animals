@@ -1,9 +1,12 @@
+import { debounce } from './utils/utils.js';
+
 export default class AnimateScroll {
   constructor(sections) {
     this.sections = document.querySelectorAll(sections);
     this.halfWindow = window.innerHeight * 0.5;
 
-    this.checkDistance = this.checkDistance.bind(this);
+    // applies 'debounce' function to optimize the 'checkDistance' method.
+    this.checkDistance = debounce(this.checkDistance.bind(this), 50);
   }
 
   // gets each HTMLElement and its 'offsetTop' value from
@@ -41,9 +44,9 @@ export default class AnimateScroll {
 
   init() {
     if (this.sections.length) {
-      this.addWindowEvent();
       this.getDistance();
       this.checkDistance();
+      this.addWindowEvent();
     }
     return this;
   }
