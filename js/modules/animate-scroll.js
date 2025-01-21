@@ -5,6 +5,15 @@ export default class AnimateScroll {
     this.anime = this.anime.bind(this);
   }
 
+  getDistance() {
+    const distanceArray = [...this.sections].map((section) => ({
+      element: section,
+      offset: section.offsetTop,
+    }));
+
+    return distanceArray;
+  }
+
   anime() {
     function getRectTop(el) {
       return el.getBoundingClientRect().top;
@@ -22,6 +31,7 @@ export default class AnimateScroll {
 
   init() {
     if (this.sections.length) {
+      this.getDistance();
       window.addEventListener('scroll', this.anime);
       this.anime();
     }
