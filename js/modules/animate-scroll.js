@@ -6,6 +6,10 @@ export default class AnimateScroll {
     this.checkDistance = this.checkDistance.bind(this);
   }
 
+  // gets each HTMLElement and its 'offsetTop' value from
+  // 'sections' property and returns them as properties of
+  // an object and creates the property 'distancesArray'
+  // with them.
   getDistance() {
     this.distancesArray = [...this.sections].map((section) => ({
       element: section,
@@ -13,6 +17,9 @@ export default class AnimateScroll {
     }));
   }
 
+  // checks if the 'scrollTop' value is greater than the
+  // 'offset' value of each section in 'distancesArray' and
+  // sets the 'data-scroll-animated' attribute value to 'active'.
   checkDistance() {
     const scrollTop = window.scrollY;
     this.distancesArray.forEach((section) => {
@@ -22,10 +29,12 @@ export default class AnimateScroll {
     });
   }
 
+  // adds 'scroll' event and its callback to DOM.
   addWindowEvent() {
     window.addEventListener('scroll', this.checkDistance);
   }
 
+  // removes 'scroll' event and its callback from DOM.
   stop() {
     window.removeEventListener('scroll', this.checkDistance);
   }
