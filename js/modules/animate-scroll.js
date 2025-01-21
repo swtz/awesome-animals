@@ -1,39 +1,37 @@
 export default class AnimateScroll {
   constructor(sections) {
     this.sections = document.querySelectorAll(sections);
+    this.halfWindow = window.innerHeight * 0.5;
 
-    this.anime = this.anime.bind(this);
+    this.checkDistance = this.checkDistance.bind(this);
   }
 
   getDistance() {
-    const distanceArray = [...this.sections].map((section) => ({
+    this.distancesArray = [...this.sections].map((section) => ({
       element: section,
-      offset: section.offsetTop,
+      offset: section.offsetTop - this.halfWindow,
     }));
-
-    return distanceArray;
   }
 
-  anime() {
-    function getRectTop(el) {
-      return el.getBoundingClientRect().top;
-    }
-
-    this.sections.forEach((section) => {
-      const elementTop = getRectTop(section);
-      const top = window.innerHeight * 0.6;
-
-      if (elementTop < top) {
-        section.dataset.scrollAnimated = 'active';
+  checkDistance() {
+    const scrollTop = window.scrollY;
+    this.distancesArray.forEach((section) => {
+      if (scrollTop > section.offset) {
+        section.element.dataset.scrollAnimated = 'active';
       }
     });
   }
 
+  addWindowEvent() {
+    window.addEventListener('scroll', this.checkDistance);
+  }
+
   init() {
     if (this.sections.length) {
+      this.addWindowEvent();
       this.getDistance();
-      window.addEventListener('scroll', this.anime);
-      this.anime();
+      this.checkDistance();
     }
+    return this;
   }
 }
