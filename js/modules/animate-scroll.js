@@ -26,6 +26,10 @@ export default class AnimateScroll {
     window.addEventListener('scroll', this.checkDistance);
   }
 
+  stop() {
+    window.removeEventListener('scroll', this.checkDistance);
+  }
+
   init() {
     if (this.sections.length) {
       this.addWindowEvent();
