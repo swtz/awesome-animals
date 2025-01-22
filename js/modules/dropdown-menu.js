@@ -2,21 +2,28 @@ import clickOutside from './click-outside.js';
 import { events } from './utils/utils.js';
 
 export default class DropdownMenu {
-  constructor(dropdowns) {
+  constructor(dropdowns, className) {
     this.dropdowns = document.querySelectorAll(dropdowns);
+    this.activeClass = className;
     this.events = events;
+
+    this.toggleDropdown = this.toggleDropdown.bind(this);
+  }
+
+  addClickOutsideDropdown(currentTarget) {
+    clickOutside(events, currentTarget, () => {
+      currentTarget.classList.remove(this.activeClass);
+    });
   }
 
   toggleDropdown(event) {
     event.preventDefault();
-    const dropdownMenu = this.querySelector('.dropdown-menu');
+    const dropdownMenu = event.currentTarget.querySelector('.dropdown-menu');
 
     if (!dropdownMenu.contains(event.target)) {
-      this.classList.toggle('active');
+      event.currentTarget.classList.toggle(this.activeClass);
 
-      clickOutside(events, this, () => {
-        this.classList.remove('active');
-      });
+      this.addClickOutsideDropdown(event.currentTarget);
     }
   }
 
