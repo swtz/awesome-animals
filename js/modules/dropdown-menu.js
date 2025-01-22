@@ -1,27 +1,46 @@
 import clickOutside from './click-outside.js';
+import { events } from './utils/utils.js';
 
-export default function initDropdownMenu() {
-  const dropdownMenus = document.querySelectorAll('[data-dropdown]');
-  const events = ['click', 'touchstart'];
+export default class DropdownMenu {
+  constructor(dropdowns, className) {
+    this.dropdowns = document.querySelectorAll(dropdowns);
+    this.activeClass = className;
+    this.events = events;
 
-  function handleEvent(event) {
-    event.preventDefault();
-    const dropdownMenu = this.querySelector('.dropdown-menu');
+    // binding 'this' to the callback to reference the class object.
+    this.toggleDropdown = this.toggleDropdown.bind(this);
+  }
 
-    if (!dropdownMenu.contains(event.target)) {
-      this.classList.toggle('active');
-    }
-
-    clickOutside(events, this, () => {
-      this.classList.remove('active');
+  // close the dropdown menu when clicking outside of it.
+  addClickOutsideDropdown(currentTarget) {
+    clickOutside(events, currentTarget, () => {
+      currentTarget.classList.remove(this.activeClass);
     });
   }
 
-  if (dropdownMenus.length) {
-    dropdownMenus.forEach((dropdownMenu) => {
+  // toggles the display of the dropdown menu.
+  toggleDropdown(event) {
+    event.preventDefault();
+    const dropdownMenu = event.currentTarget.querySelector('.dropdown-menu');
+
+    if (!dropdownMenu.contains(event.target)) {
+      event.currentTarget.classList.toggle(this.activeClass);
+
+      this.addClickOutsideDropdown(event.currentTarget);
+    }
+  }
+
+  // add events for each dropdown menu selected.
+  addDropdownsEvents() {
+    this.dropdowns.forEach((dropdownMenu) => {
       events.forEach((userEvent) => {
-        dropdownMenu.addEventListener(userEvent, handleEvent);
+        dropdownMenu.addEventListener(userEvent, this.toggleDropdown);
       });
     });
+  }
+
+  init() {
+    if (this.dropdowns.length) this.addDropdownsEvents();
+    return this;
   }
 }

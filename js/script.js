@@ -6,7 +6,7 @@ import Tooltip from './modules/tooltip.js';
 import animalsFetch from './modules/animals-fetch.js';
 import btcFetch from './modules/btc-fetch.js';
 import AnimateScroll from './modules/animate-scroll.js';
-import initDropdownMenu from './modules/dropdown-menu.js';
+import DropdownMenu from './modules/dropdown-menu.js';
 import initMenuMobile from './modules/menu-mobile.js';
 import initOperation from './modules/operation.js';
 
@@ -37,6 +37,8 @@ btcFetch('https://blockchain.info/ticker', '[data-btc]');
 const animateScroll = new AnimateScroll('[data-scroll-animated]');
 animateScroll.init();
 
-initDropdownMenu();
+const dropdownMenu = new DropdownMenu('[data-dropdown]', 'active');
+dropdownMenu.init();
+
 initMenuMobile();
 initOperation();
