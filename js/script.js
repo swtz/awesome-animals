@@ -7,7 +7,7 @@ import animalsFetch from './modules/animals-fetch.js';
 import btcFetch from './modules/btc-fetch.js';
 import AnimateScroll from './modules/animate-scroll.js';
 import DropdownMenu from './modules/dropdown-menu.js';
-import initMenuMobile from './modules/menu-mobile.js';
+import MenuMobile from './modules/menu-mobile.js';
 import initOperation from './modules/operation.js';
 
 const smoothScroll = new SmoothScroll('[data-smooth-scroll] a[href^="#"]');
@@ -40,5 +40,7 @@ animateScroll.init();
 const dropdownMenu = new DropdownMenu('[data-dropdown]', 'active');
 dropdownMenu.init();
 
-initMenuMobile();
+const menuMobile = new MenuMobile();
+menuMobile.init();
+
 initOperation();
