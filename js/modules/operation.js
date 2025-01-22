@@ -22,8 +22,8 @@ export default class Operation {
   // and return the boolean result with 'AND' operator.
   isOperating() {
     const isOperationHour = (
-      this.now.getHours() >= this.operationHours[0]
-      && this.now.getHours() < this.operationHours[1]
+      this.now.getUTCHours() - 3 >= this.operationHours[0]
+      && this.now.getUTCHours() - 3 < this.operationHours[1]
     );
     const isOperationDay = this.operationDays.includes(this.now.getDay());
 
