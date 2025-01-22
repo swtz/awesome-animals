@@ -40,7 +40,7 @@ animateScroll.init();
 const dropdownMenu = new DropdownMenu('[data-dropdown]', 'active');
 dropdownMenu.init();
 
-const menuMobile = new MenuMobile();
+const menuMobile = new MenuMobile('[data-menu="button"]', '[data-menu="list"]', 'active');
 menuMobile.init();
 
 initOperation();
