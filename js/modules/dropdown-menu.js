@@ -7,15 +7,18 @@ export default class DropdownMenu {
     this.activeClass = className;
     this.events = events;
 
+    // binding 'this' to the callback to reference the class object.
     this.toggleDropdown = this.toggleDropdown.bind(this);
   }
 
+  // close the dropdown menu when clicking outside of it.
   addClickOutsideDropdown(currentTarget) {
     clickOutside(events, currentTarget, () => {
       currentTarget.classList.remove(this.activeClass);
     });
   }
 
+  // toggles the display of the dropdown menu.
   toggleDropdown(event) {
     event.preventDefault();
     const dropdownMenu = event.currentTarget.querySelector('.dropdown-menu');
@@ -27,6 +30,7 @@ export default class DropdownMenu {
     }
   }
 
+  // add events for each dropdown menu selected.
   addDropdownsEvents() {
     this.dropdowns.forEach((dropdownMenu) => {
       events.forEach((userEvent) => {
@@ -37,5 +41,6 @@ export default class DropdownMenu {
 
   init() {
     if (this.dropdowns.length) this.addDropdownsEvents();
+    return this;
   }
 }
