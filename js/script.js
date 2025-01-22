@@ -8,7 +8,7 @@ import btcFetch from './modules/btc-fetch.js';
 import AnimateScroll from './modules/animate-scroll.js';
 import DropdownMenu from './modules/dropdown-menu.js';
 import MenuMobile from './modules/menu-mobile.js';
-import initOperation from './modules/operation.js';
+import Operation from './modules/operation.js';
 
 const smoothScroll = new SmoothScroll('[data-smooth-scroll] a[href^="#"]');
 smoothScroll.init();
@@ -43,4 +43,5 @@ dropdownMenu.init();
 const menuMobile = new MenuMobile('[data-menu="button"]', '[data-menu="list"]', 'active');
 menuMobile.init();
 
-initOperation();
+const operation = new Operation('[data-week]', 'data-week', 'data-hour');
+operation.init();

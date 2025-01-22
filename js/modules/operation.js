@@ -1,7 +1,9 @@
-export default function initOperation() {
-  const weekOperation = document.querySelector('[data-week]');
-  const weekDays = weekOperation.getAttribute('data-week');
-  const weekHours = weekOperation.getAttribute('data-hour');
+export default class Operation {
+  constructor(operation, days, hours) {
+    this.operation = document.querySelector(operation);
+    this.weekDays = operation.getAttribute(days);
+    this.weekHours = operation.getAttribute(hours);
+  }
 
   const now = new Date();
 
@@ -11,7 +13,9 @@ export default function initOperation() {
   const isOperationHour = (now.getHours() >= arrayHours[0] && now.getHours() < arrayHours[1]);
   const isOperationDay = arrayDays.includes(now.getDay());
 
-  if (isOperationDay && isOperationHour) {
-    weekOperation.classList.add('active');
+  init() {
+    if (isOperationDay && isOperationHour) {
+      operation.classList.add('active');
+    }
   }
 }
