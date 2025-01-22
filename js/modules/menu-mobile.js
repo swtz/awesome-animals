@@ -7,22 +7,28 @@ export default class MenuMobile {
     this.menuList = document.querySelector(menu);
     this.activeClass = className;
     this.events = events;
+
+    this.open = this.open.bind(this);
   }
 
-  handleEvent(event) {
-    event.preventDefault();
-    this.menuList.classList.add(this.activeClass);
-    this.btn.classList.add(this.activeClass);
-
+  addClickOutside() {
     clickOutside(events, this.menuList, () => {
       this.menuList.classList.remove(this.activeClass);
       this.btn.classList.remove(this.activeClass);
     });
   }
 
+  open(event) {
+    event.preventDefault();
+    this.menuList.classList.add(this.activeClass);
+    this.btn.classList.add(this.activeClass);
+
+    this.addClickOutside();
+  }
+
   addMenuMobileEvents() {
     events.forEach((userEvent) => {
-      this.btn.addEventListener(userEvent, this.handleEvent);
+      this.btn.addEventListener(userEvent, this.open);
     });
   }
 
