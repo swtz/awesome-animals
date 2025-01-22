@@ -43,5 +43,5 @@ dropdownMenu.init();
 const menuMobile = new MenuMobile('[data-menu="button"]', '[data-menu="list"]', 'active');
 menuMobile.init();
 
-const operation = new Operation('[data-week]', 'data-week', 'data-hour');
+const operation = new Operation('[data-week]', 'data-week', 'data-hour', 'active');
 operation.init();

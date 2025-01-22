@@ -1,21 +1,38 @@
 export default class Operation {
-  constructor(operation, days, hours) {
+  constructor(operation, days, hours, className) {
     this.operation = document.querySelector(operation);
-    this.weekDays = operation.getAttribute(days);
-    this.weekHours = operation.getAttribute(hours);
+    this.weekDays = this.operation.getAttribute(days);
+    this.weekHours = this.operation.getAttribute(hours);
+    this.activeClass = className;
   }
 
-  const now = new Date();
+  setCurrentDate() {
+    this.now = new Date();
+  }
 
-  const arrayDays = weekDays.split(',').map(Number);
-  const arrayHours = weekHours.split(',').map(Number);
+  setOperation() {
+    this.operationDays = this.weekDays.split(',').map(Number);
+    this.operationHours = this.weekHours.split(',').map(Number);
+  }
 
-  const isOperationHour = (now.getHours() >= arrayHours[0] && now.getHours() < arrayHours[1]);
-  const isOperationDay = arrayDays.includes(now.getDay());
+  isOperating() {
+    const isOperationHour = (
+      this.now.getHours() >= this.operationHours[0]
+      && this.now.getHours() < this.operationHours[1]
+    );
+    const isOperationDay = this.operationDays.includes(this.now.getDay());
+
+    return (isOperationDay && isOperationHour);
+  }
 
   init() {
-    if (isOperationDay && isOperationHour) {
-      operation.classList.add('active');
+    if (this.operation && this.weekDays && this.weekHours) {
+      this.setCurrentDate();
+      this.setOperation();
+      console.log(this.isOperating());
+      if (this.isOperating()) {
+        this.operation.classList.add(this.activeClass);
+      }
     }
   }
 }
