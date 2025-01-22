@@ -37,8 +37,8 @@ btcFetch('https://blockchain.info/ticker', '[data-btc]');
 const animateScroll = new AnimateScroll('[data-scroll-animated]');
 animateScroll.init();
 
-const dropdownmenu = new DropdownMenu();
-dropdownmenu.init('[data-dropdown]');
+const dropdownmenu = new DropdownMenu('[data-dropdown]');
+dropdownmenu.init();
 
 initMenuMobile();
 initOperation();

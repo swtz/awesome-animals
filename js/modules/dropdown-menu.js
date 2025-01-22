@@ -7,23 +7,23 @@ export default class DropdownMenu {
     this.events = events;
   }
 
-  handleEvent(event) {
+  toggleDropdown(event) {
     event.preventDefault();
     const dropdownMenu = this.querySelector('.dropdown-menu');
 
     if (!dropdownMenu.contains(event.target)) {
       this.classList.toggle('active');
-    }
 
-    clickOutside(events, this, () => {
-      this.classList.remove('active');
-    });
+      clickOutside(events, this, () => {
+        this.classList.remove('active');
+      });
+    }
   }
 
   addDropdownsEvents() {
     this.dropdowns.forEach((dropdownMenu) => {
       events.forEach((userEvent) => {
-        dropdownMenu.addEventListener(userEvent, this.handleEvent);
+        dropdownMenu.addEventListener(userEvent, this.toggleDropdown);
       });
     });
   }
