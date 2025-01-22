@@ -25,14 +25,16 @@ export default class Operation {
     return (isOperationDay && isOperationHour);
   }
 
+  setOperationStatus() {
+    if (this.isOperating()) this.operation.classList.add(this.activeClass);
+  }
+
   init() {
     if (this.operation && this.weekDays && this.weekHours) {
       this.setCurrentDate();
       this.setOperation();
-      console.log(this.isOperating());
-      if (this.isOperating()) {
-        this.operation.classList.add(this.activeClass);
-      }
+      this.setOperationStatus();
     }
+    return this;
   }
 }
