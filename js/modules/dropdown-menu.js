@@ -1,10 +1,13 @@
 import clickOutside from './click-outside.js';
+import { events } from './utils/utils.js';
 
-export default function initDropdownMenu() {
-  const dropdownMenus = document.querySelectorAll('[data-dropdown]');
-  const events = ['click', 'touchstart'];
+export default class DropdownMenu {
+  constructor(dropdowns) {
+    this.dropdowns = document.querySelectorAll(dropdowns);
+    this.events = events;
+  }
 
-  function handleEvent(event) {
+  handleEvent(event) {
     event.preventDefault();
     const dropdownMenu = this.querySelector('.dropdown-menu');
 
@@ -17,11 +20,15 @@ export default function initDropdownMenu() {
     });
   }
 
-  if (dropdownMenus.length) {
-    dropdownMenus.forEach((dropdownMenu) => {
+  addDropdownsEvents() {
+    this.dropdowns.forEach((dropdownMenu) => {
       events.forEach((userEvent) => {
-        dropdownMenu.addEventListener(userEvent, handleEvent);
+        dropdownMenu.addEventListener(userEvent, this.handleEvent);
       });
     });
+  }
+
+  init() {
+    if (this.dropdowns.length) this.addDropdownsEvents();
   }
 }
