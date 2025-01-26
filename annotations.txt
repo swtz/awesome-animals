@@ -20,3 +20,6 @@
 `
 // Assim, as inconsistências de tipografia dos mais variados browsers
 // são eliminadas.
+
+// Tipografia é usado quando se escreve o caractere literal.
+// Caso contrário, usa-se imagens (de preferência vetoriais).
