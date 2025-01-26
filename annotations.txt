@@ -7,3 +7,13 @@
 // o coach-andre ressaltou que NÃO É UMA BOA PRÁTICA prevenir o padrão
 // dos 'touch' events, pois eles podem impedir um usuário de mover a tela
 // dependendo da região do toque.
+
+// [into 'menu-mobile.js']:
+// Estão sendo adicionados ao botão do menu mobile os eventos
+// 'touchstart' e 'click'. Entretanto, o evento 'click' É EMULADO em
+// dispositivos mobile, ou seja, quando o usuário no celular interage
+// com o 'btn', é disparado tanto 'touchstart' como 'click'.
+// Assim, é causado o efeito de 'double click'.
+
+// Nesse caso, 'event.preventDefault()' PREVINE que o evento 'click'
+// aconteça.
