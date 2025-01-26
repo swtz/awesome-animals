@@ -1,5 +1,10 @@
+.gallery {
+  grid-column: 1 / -1;
+}
+
 .slide-wrapper {
   overflow-x: hidden;
+  grid-column: 1 / -1;
 }
 
 .slide {
@@ -31,10 +36,9 @@
 }
 
 .custom-controls {
+  grid-column: 1 / -1;
   display: flex;
   justify-content: center;
-  margin-top: 40px;
-  margin-bottom: 20px;
   flex-wrap: wrap;
 }
 
