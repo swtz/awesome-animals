@@ -1,3 +1,4 @@
+import SlideNav from './modules/slide.js';
 import SmoothScroll from './modules/smooth-scroll.js';
 import Accordion from './modules/accordion-list.js';
 import TabNav from './modules/tab-nav.js';
@@ -31,9 +32,6 @@ modal.init();
 const tooltip = new Tooltip('[data-tooltip]');
 tooltip.init();
 
-animalsFetch('./data/animals-api.json', '.grid-numbers');
-btcFetch('https://blockchain.info/ticker', '[data-btc]');
-
 const animateScroll = new AnimateScroll('[data-scroll-animated]');
 animateScroll.init();
 
@@ -45,3 +43,11 @@ menuMobile.init();
 
 const operation = new Operation('[data-week]', 'data-week', 'data-hour', 'active');
 operation.init();
+
+animalsFetch('./data/animals-api.json', '.grid-numbers');
+
+btcFetch('https://blockchain.info/ticker', '[data-btc]');
+
+const slide = new SlideNav('.slide', '.slide-wrapper');
+slide.init();
+slide.addControl('.custom-controls');
