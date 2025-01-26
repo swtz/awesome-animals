@@ -1,4 +1,9 @@
 // Concluída a 'feature' Slide Animais Fantásticos (Módulo 12)
 // Curso: ORIGAMID ES6+
 
-// Essa feature será adicionada ao projeto.
+// Aula 1212 (Improvements to the Final Project)
+
+// 'event.preventDefault()';
+// o coach-andre ressaltou que NÃO É UMA BOA PRÁTICA prevenir o padrão
+// dos 'touch' events, pois eles podem impedir um usuário de mover a tela
+// dependendo da região do toque.
