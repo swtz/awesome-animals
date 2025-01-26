@@ -1,3 +1,4 @@
+import SlideNav from './modules/slide.js';
 import SmoothScroll from './modules/smooth-scroll.js';
 import Accordion from './modules/accordion-list.js';
 import TabNav from './modules/tab-nav.js';
@@ -45,3 +46,7 @@ menuMobile.init();
 
 const operation = new Operation('[data-week]', 'data-week', 'data-hour', 'active');
 operation.init();
+
+const slide = new SlideNav('.slide', '.slide-wrapper');
+slide.init();
+slide.addControl('.custom-controls');

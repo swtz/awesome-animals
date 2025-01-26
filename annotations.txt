@@ -1,2 +1,4 @@
-// Consolidação dos conhecimentos obtidos até o módulo 11
+// Concluída a 'feature' Slide Animais Fantásticos (Módulo 12)
 // Curso: ORIGAMID ES6+
+
+// Essa feature será adicionada ao projeto.
