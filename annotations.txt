@@ -3,17 +3,20 @@
 
 // Aula 1212 (Improvements to the Final Project)
 
-// 'event.preventDefault()';
-// o coach-andre ressaltou que NÃO É UMA BOA PRÁTICA prevenir o padrão
-// dos 'touch' events, pois eles podem impedir um usuário de mover a tela
-// dependendo da região do toque.
+// Outro problema são os caracteres especiais que foram adicionados
+// no 'html' do site. Em algumas plataformas, eles não são reconhecidos
+// e podem interferir no design do site.
 
-// [into 'menu-mobile.js']:
-// Estão sendo adicionados ao botão do menu mobile os eventos
-// 'touchstart' e 'click'. Entretanto, o evento 'click' É EMULADO em
-// dispositivos mobile, ou seja, quando o usuário no celular interage
-// com o 'btn', é disparado tanto 'touchstart' como 'click'.
-// Assim, é causado o efeito de 'double click'.
-
-// Nesse caso, 'event.preventDefault()' PREVINE que o evento 'click'
-// aconteça.
+// Serão usados arquivos .svg equivalentes a esses caracteres.
+// São criadas tag's 'span' e, no css, são estilizadas.
+// Exemplo:
+`
+.class-name {
+  background: url(../img/image-name.svg) center center no-repeat;
+  display: inline-block;
+  width: 8px;
+  height: 10px;
+}
+`
+// Assim, as inconsistências de tipografia dos mais variados browsers
+// são eliminadas.

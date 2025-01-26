@@ -52,13 +52,14 @@
 }
 
 .js dl[data-accordion] dt span {
-  font-size: 24px;
+  background: url(../img/arrow-red.svg) center center no-repeat;
   display: inline-block;
-  position: relative;
-  left: -4px;
-  top: 2px;
+  width: 10px;
+  height: 10px;
+  transform: rotate(90deg);
+  transition: transform .3s;
 }
 
 .js dl[data-accordion] dt.active span {
-  transform: rotate(180deg);
+  transform: rotate(-90deg);
 }
