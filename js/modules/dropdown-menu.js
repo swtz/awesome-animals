@@ -1,5 +1,5 @@
 import clickOutside from './click-outside.js';
-import { events } from './utils/utils.js';
+import { events, isMobile } from './utils/utils.js';
 
 export default class DropdownMenu {
   constructor(dropdowns, className) {
@@ -30,6 +30,16 @@ export default class DropdownMenu {
     }
   }
 
+  // already activates dropdown menu on mobile devices
+  setDropdownMenuActive() {
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+    const dropdownHandle = document.querySelector('[data-dropdown]');
+    if (isMobile) {
+      dropdownMenu.classList.add(this.activeClass);
+      dropdownHandle.classList.add(this.activeClass);
+    }
+  }
+
   // add events for each dropdown menu selected.
   addDropdownsEvents() {
     this.dropdowns.forEach((dropdownMenu) => {
@@ -40,7 +50,7 @@ export default class DropdownMenu {
   }
 
   init() {
-    if (this.dropdowns.length) this.addDropdownsEvents();
+    if (this.dropdowns.length) this.addDropdownsEvents(); this.setDropdownMenuActive();
     return this;
   }
 }

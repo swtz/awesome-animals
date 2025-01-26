@@ -1,4 +1,25 @@
 // Concluída a 'feature' Slide Animais Fantásticos (Módulo 12)
 // Curso: ORIGAMID ES6+
 
-// Essa feature será adicionada ao projeto.
+// Aula 1212 (Improvements to the Final Project)
+
+// Outro problema são os caracteres especiais que foram adicionados
+// no 'html' do site. Em algumas plataformas, eles não são reconhecidos
+// e podem interferir no design do site.
+
+// Serão usados arquivos .svg equivalentes a esses caracteres.
+// São criadas tag's 'span' e, no css, são estilizadas.
+// Exemplo:
+`
+.class-name {
+  background: url(../img/image-name.svg) center center no-repeat;
+  display: inline-block;
+  width: 8px;
+  height: 10px;
+}
+`
+// Assim, as inconsistências de tipografia dos mais variados browsers
+// são eliminadas.
+
+// Tipografia é usado quando se escreve o caractere literal.
+// Caso contrário, usa-se imagens (de preferência vetoriais).

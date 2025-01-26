@@ -23,11 +23,7 @@ export default class TabNav {
   addTabMenuEvent() {
     this.events.forEach((userEvent) => {
       this.tabMenu.forEach((li, index) => {
-        li.addEventListener(userEvent, (event) => {
-          // prevents 'double click' effect by 'touchstart' event
-          event.preventDefault();
-          this.toggleTab(index);
-        });
+        li.addEventListener(userEvent, () => this.toggleTab(index));
       });
     });
   }

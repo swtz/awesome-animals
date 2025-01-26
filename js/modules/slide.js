@@ -24,9 +24,9 @@ class Slide {
   }
 
   onStart(event) {
-    event.preventDefault();
     let moveType;
     if (event.type === 'mousedown') {
+      event.preventDefault();
       this.dist.startX = event.clientX;
       moveType = 'mousemove';
     } else {
